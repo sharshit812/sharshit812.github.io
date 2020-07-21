@@ -1,7 +1,7 @@
 $fb = new Facebook\Facebook([
   'app_id' => '700274447422038',
   'app_secret' => '687a729853806cf918fb0a05970fc0f4',
-  'default_graph_version' => 'v2.10',
+  'default_graph_version' => 'v7.0',
   ]);
 
 $helper = $fb->getPageTabHelper();
