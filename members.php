@@ -1,53 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Website</title>
-  </head>
-  <body>
-    <!-- This is the Format of a comment-->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=700274447422038&autoLogAppEvents=1" nonce="Nrg24QxY"></script>
+# /js-login.php
+$fb = new Facebook\Facebook([
+  'app_id' => '{app-id}',
+  'app_secret' => '{app-secret}',
+  'default_graph_version' => 'v2.10',
+  ]);
 
+$helper = $fb->getJavaScriptHelper();
 
-    <h1>My Website</h1>
-    <p>This is my Very First Website</p>
-    <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+try {
+  $accessToken = $helper->getAccessToken();
+} catch(Facebook\Exception\ResponseException $e) {
+  // When Graph returns an error
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exception\SDKException $e) {
+  // When validation fails or other local issues
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
 
-    <fb:login-button 
-    scope="public_profile,email"
-    onlogin="checkLoginState();">
-  </fb:login-button>
+if (! isset($accessToken)) {
+  echo 'No cookie set or no OAuth data could be obtained from cookie.';
+  exit;
+}
 
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+// Logged in
+echo '<h3>Access Token</h3>';
+var_dump($accessToken->getValue());
 
- 
-
-    
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '700274447422038',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v7.0'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-  </body>
-</html>
+$_SESSION['fb_access_token'] = (string) $accessToken;
