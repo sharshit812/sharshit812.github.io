@@ -55,6 +55,7 @@
 
   </body>
 </html>
+<script>
 # /js-login.php
 $fb = new Facebook\Facebook([
   'app_id' => '{app-id}',
@@ -86,3 +87,4 @@ echo '<h3>Access Token</h3>';
 var_dump($accessToken->getValue());
 
 $_SESSION['fb_access_token'] = (string) $accessToken;
+                            </script>
