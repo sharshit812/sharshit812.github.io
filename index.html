@@ -52,6 +52,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+<ul>
 <?php $fb = new Facebook\Facebook([
   'app_id' => '700274447422038',
   'app_secret' => '687a729853806cf918fb0a05970fc0f4',
@@ -91,6 +92,7 @@ echo '<h3>Access Token</h3>';
 var_dump($accessToken->getValue());
 
 ?>
+    </ul>
 
   </body>
 </html>
