@@ -17,12 +17,16 @@
     scope="public_profile,email"
     onlogin="checkLoginState();">
   </fb:login-button>
-
+<script>
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+       if (response.status === 'connected') {
+          return console.log(response.authResponse.accessToken);
+  } 
+     
     });
   }
+ </script>
 
  
 
