@@ -21,7 +21,7 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
        if (response.status === 'connected') {
-          return console.log(response.authResponse.accessToken);
+          alert( console.log(response.authResponse.accessToken));
   } 
      
     });
@@ -51,8 +51,6 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-</script>
-    <script src="https://gist.github.com/Ariestattoo/8307135.js"></script>
 
 
   </body>
