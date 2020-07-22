@@ -16,9 +16,7 @@ function main()
 
       console.log("token = " + token);
 
-      Fb.api("/me", "get", token, function() {
-      // this will work now.
-      });
+      
 
    }, true);
 }
