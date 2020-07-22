@@ -17,7 +17,7 @@
 
     <fb:login-button 
     scope="public_profile,email"
-    onlogin="statusChangeCallback();">
+    onlogin="getLoginStatus();">
   </fb:login-button>
 
 
@@ -44,10 +44,13 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log(response.authResponse.accessToken);
+  }
+});
     </script>
-    <div id="status"></div>
- 
-     <script src="/main.js"></script>
+    
  
  
 
