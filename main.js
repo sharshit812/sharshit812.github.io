@@ -1,22 +1,5 @@
-function main()
-{
-   var token;
-
-   FB.getLoginStatus(function getLoginStatusCallback(response)
-   {
-      if (response.status === "connected")
-      {
-         document.getElementById("loginButton").style.display = "none";
-      }
-      else
-      {
-         document.getElementById("loginButton").style.display = "all";
-      }
-      token = response.authResponse.accessToken;
-
-      console.log("token = " + token);
-
-      
-
-   }, true);
-}
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log(response.authResponse.accessToken);
+  }
+});
