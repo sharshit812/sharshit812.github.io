@@ -16,7 +16,7 @@
 
     <fb:login-button 
     scope="public_profile,email"
-    onlogin="getLoginStatus();">
+    onlogin="checkLoginState();">
   </fb:login-button>
 
 
@@ -46,11 +46,11 @@
     </script>
  
      <script >
+    function checkLoginState() {
     FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    console.log(response.authResponse.accessToken);
-  }
-});</script>
+      statusChangeCallback(response);
+    });
+  }</script>
  
  
 
