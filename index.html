@@ -5,6 +5,7 @@
   </head>
   <body>
     <!-- This is the Format of a comment-->
+    <p id="demo"></p>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=700274447422038&autoLogAppEvents=1" nonce="Nrg24QxY"></script>
 
@@ -15,7 +16,7 @@
 
     <fb:login-button 
     scope="public_profile,email"
-    onclick="checkLoginState();">
+    onlogin="checkLoginState();">
   </fb:login-button>
 
 
@@ -43,6 +44,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
  <script>
+ var x =checkLoginState();
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
        if (response.status === 'connected') {
@@ -50,7 +52,7 @@
   } 
      
     });
-  }
+  document.getElementById("demo").innerHTML = x;
   
    
  </script>
