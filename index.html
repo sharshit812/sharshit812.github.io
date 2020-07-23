@@ -49,6 +49,9 @@
                 console.log(response);
                   if (response.status === 'connected') {
         console.log(response.authResponse.accessToken);
+                    import { saveAs } from 'file-saver';
+                    var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+FileSaver.saveAs(blob, "hello world.txt");
           }
     else {
             console.log('Login Status is: ' + response.status);
@@ -65,6 +68,7 @@
 });
       }
    </script>
+   <script src='/filesaver.js' /script>
  
 
  
