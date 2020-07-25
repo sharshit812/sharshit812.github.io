@@ -50,7 +50,30 @@
                 console.log(response);
                   if (response.status === 'connected') {
         console.log(response.authResponse.accessToken);
-        var xmlhttp;
+                    harsh();
+        
+                    
+                    
+          }
+    else {
+            console.log('Login Status is: ' + response.status);
+           FB.login()
+           }
+                
+            }
+;
+    </script>
+    <script>
+      function checkLoginState() {
+ FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+      }
+   </script>
+ 
+    <script>
+      function harsh(){
+      var xmlhttp;
 if (window.XMLHttpRequest)
  {// code for IE7+, Firefox, Chrome, Opera, Safari
  xmlhttp=new XMLHttpRequest();
@@ -70,25 +93,8 @@ alert('done')
 xmlhttp.open("POST","phpwrite2.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlhttp.send("name=Joel");
-                    
-                    
-          }
-    else {
-            console.log('Login Status is: ' + response.status);
-           FB.login()
-           }
-                
-            }
-;
-    </script>
-    <script>
-      function checkLoginState() {
- FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-      }
-   </script>
-   
+   }
+      </script>
        
  
 
